@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1314px;
+            height: 456px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Commune_Abomey_0.js"></script>
+        <script src="data/Villages_1.js"></script>
+        <script src="data/Ville_Abomey_2.js"></script>
+        <script src="data/infrastructure_de_sante_3.js"></script>
+        <script src="data/Route_Abomey_4.js"></script>
+        <script src="data/Riviere_Abomey_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[7.150990283713916,1.800034147443596],[7.235951083713692,2.0444137864863436]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Commune_Abomey_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nom_com</th>\
+                        <td>' + (feature.properties['nom_com'] !== null ? autolinker.link(feature.properties['nom_com'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">population</th>\
+                        <td>' + (feature.properties['population'] !== null ? autolinker.link(feature.properties['population'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">shape_leng</th>\
+                        <td>' + (feature.properties['shape_leng'] !== null ? autolinker.link(feature.properties['shape_leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">shape_area</th>\
+                        <td>' + (feature.properties['shape_area'] !== null ? autolinker.link(feature.properties['shape_area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Commune_Abomey_0_0() {
+            return {
+                pane: 'pane_Commune_Abomey_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Commune_Abomey_0');
+        map.getPane('pane_Commune_Abomey_0').style.zIndex = 400;
+        map.getPane('pane_Commune_Abomey_0').style['mix-blend-mode'] = 'normal';
+        var layer_Commune_Abomey_0 = new L.geoJson(json_Commune_Abomey_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Commune_Abomey_0',
+            layerName: 'layer_Commune_Abomey_0',
+            pane: 'pane_Commune_Abomey_0',
+            onEachFeature: pop_Commune_Abomey_0,
+            style: style_Commune_Abomey_0_0,
+        });
+        bounds_group.addLayer(layer_Commune_Abomey_0);
+        map.addLayer(layer_Commune_Abomey_0);
+        function pop_Villages_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nom_loc</th>\
+                        <td>' + (feature.properties['nom_loc'] !== null ? autolinker.link(feature.properties['nom_loc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">statut_adm</th>\
+                        <td>' + (feature.properties['statut_adm'] !== null ? autolinker.link(feature.properties['statut_adm'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">arrondisst</th>\
+                        <td>' + (feature.properties['arrondisst'] !== null ? autolinker.link(feature.properties['arrondisst'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">village_ad</th>\
+                        <td>' + (feature.properties['village_ad'] !== null ? autolinker.link(feature.properties['village_ad'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Villages_1_0() {
+            return {
+                pane: 'pane_Villages_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Villages_1');
+        map.getPane('pane_Villages_1').style.zIndex = 401;
+        map.getPane('pane_Villages_1').style['mix-blend-mode'] = 'normal';
+        var layer_Villages_1 = new L.geoJson(json_Villages_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Villages_1',
+            layerName: 'layer_Villages_1',
+            pane: 'pane_Villages_1',
+            onEachFeature: pop_Villages_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Villages_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Villages_1);
+        map.addLayer(layer_Villages_1);
+        function pop_Ville_Abomey_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nom_loc</th>\
+                        <td>' + (feature.properties['nom_loc'] !== null ? autolinker.link(feature.properties['nom_loc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">statut_adm</th>\
+                        <td>' + (feature.properties['statut_adm'] !== null ? autolinker.link(feature.properties['statut_adm'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">commune</th>\
+                        <td>' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">arrondisst</th>\
+                        <td>' + (feature.properties['arrondisst'] !== null ? autolinker.link(feature.properties['arrondisst'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">village_ad</th>\
+                        <td>' + (feature.properties['village_ad'] !== null ? autolinker.link(feature.properties['village_ad'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">nom_enq</th>\
+                        <td>' + (feature.properties['nom_enq'] !== null ? autolinker.link(feature.properties['nom_enq'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Ville_Abomey_2_0() {
+            return {
+                pane: 'pane_Ville_Abomey_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Ville_Abomey_2');
+        map.getPane('pane_Ville_Abomey_2').style.zIndex = 402;
+        map.getPane('pane_Ville_Abomey_2').style['mix-blend-mode'] = 'normal';
+        var layer_Ville_Abomey_2 = new L.geoJson(json_Ville_Abomey_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Ville_Abomey_2',
+            layerName: 'layer_Ville_Abomey_2',
+            pane: 'pane_Ville_Abomey_2',
+            onEachFeature: pop_Ville_Abomey_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Ville_Abomey_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Ville_Abomey_2);
+        map.addLayer(layer_Ville_Abomey_2);
+        function pop_infrastructure_de_sante_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">nature</th>\
+                        <td>' + (feature.properties['nature'] !== null ? autolinker.link(feature.properties['nature'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">nom_san</th>\
+                        <td>' + (feature.properties['nom_san'] !== null ? autolinker.link(feature.properties['nom_san'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_infrastructure_de_sante_3_0(feature) {
+            switch(String(feature.properties['type'])) {
+                case 'CH_DEP':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 10.4,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'HOPITAL_ZONE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MATERNITE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 7.0,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRE_SANTE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CLINIQUE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DISPENSAIRE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 3.2,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_infrastructure_de_sante_3_1(feature) {
+            switch(String(feature.properties['type'])) {
+                case 'CH_DEP':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'HOPITAL_ZONE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 4.61538,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MATERNITE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 4.03846,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRE_SANTE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 3.46154,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CLINIQUE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 2.3077,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DISPENSAIRE':
+                    return {
+                pane: 'pane_infrastructure_de_sante_3',
+                radius: 2.64616,
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_infrastructure_de_sante_3');
+        map.getPane('pane_infrastructure_de_sante_3').style.zIndex = 403;
+        map.getPane('pane_infrastructure_de_sante_3').style['mix-blend-mode'] = 'normal';
+        var layer_infrastructure_de_sante_3 = new L.geoJson.multiStyle(json_infrastructure_de_sante_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_infrastructure_de_sante_3',
+            layerName: 'layer_infrastructure_de_sante_3',
+            pane: 'pane_infrastructure_de_sante_3',
+            onEachFeature: pop_infrastructure_de_sante_3,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_infrastructure_de_sante_3_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_infrastructure_de_sante_3_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_infrastructure_de_sante_3);
+        map.addLayer(layer_infrastructure_de_sante_3);
+        function pop_Route_Abomey_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">num_route</th>\
+                        <td>' + (feature.properties['num_route'] !== null ? autolinker.link(feature.properties['num_route'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>cl_admin</strong><br />' + (feature.properties['cl_admin'] !== null ? autolinker.link(feature.properties['cl_admin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">revetement</th>\
+                        <td>' + (feature.properties['revetement'] !== null ? autolinker.link(feature.properties['revetement'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">shape_leng</th>\
+                        <td>' + (feature.properties['shape_leng'] !== null ? autolinker.link(feature.properties['shape_leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Route_Abomey_4_0(feature) {
+            switch(String(feature.properties['revetement'])) {
+                case 'BITUME':
+                    return {
+                pane: 'pane_Route_Abomey_4',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'PAVE':
+                    return {
+                pane: 'pane_Route_Abomey_4',
+                opacity: 1,
+                color: 'rgba(152,76,36,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'NON_REVETU':
+                    return {
+                pane: 'pane_Route_Abomey_4',
+                opacity: 1,
+                color: 'rgba(150,37,225,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Route_Abomey_4');
+        map.getPane('pane_Route_Abomey_4').style.zIndex = 404;
+        map.getPane('pane_Route_Abomey_4').style['mix-blend-mode'] = 'normal';
+        var layer_Route_Abomey_4 = new L.geoJson(json_Route_Abomey_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Route_Abomey_4',
+            layerName: 'layer_Route_Abomey_4',
+            pane: 'pane_Route_Abomey_4',
+            onEachFeature: pop_Route_Abomey_4,
+            style: style_Route_Abomey_4_0,
+        });
+        bounds_group.addLayer(layer_Route_Abomey_4);
+        map.addLayer(layer_Route_Abomey_4);
+        function pop_Riviere_Abomey_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nom_ce</th>\
+                        <td>' + (feature.properties['nom_ce'] !== null ? autolinker.link(feature.properties['nom_ce'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">regime</th>\
+                        <td>' + (feature.properties['regime'] !== null ? autolinker.link(feature.properties['regime'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">shape_leng</th>\
+                        <td>' + (feature.properties['shape_leng'] !== null ? autolinker.link(feature.properties['shape_leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Riviere_Abomey_5_0() {
+            return {
+                pane: 'pane_Riviere_Abomey_5',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Riviere_Abomey_5');
+        map.getPane('pane_Riviere_Abomey_5').style.zIndex = 405;
+        map.getPane('pane_Riviere_Abomey_5').style['mix-blend-mode'] = 'normal';
+        var layer_Riviere_Abomey_5 = new L.geoJson(json_Riviere_Abomey_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Riviere_Abomey_5',
+            layerName: 'layer_Riviere_Abomey_5',
+            pane: 'pane_Riviere_Abomey_5',
+            onEachFeature: pop_Riviere_Abomey_5,
+            style: style_Riviere_Abomey_5_0,
+        });
+        bounds_group.addLayer(layer_Riviere_Abomey_5);
+        map.addLayer(layer_Riviere_Abomey_5);
+        setBounds();
+        var i = 0;
+        layer_Villages_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nom_loc'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['nom_loc']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Villages_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Ville_Abomey_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nom_loc'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['nom_loc']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ville_Abomey_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Villages_1,layer_Ville_Abomey_2,layer_infrastructure_de_sante_3]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Villages_1,layer_Ville_Abomey_2,layer_infrastructure_de_sante_3]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Villages_1,layer_Ville_Abomey_2,layer_infrastructure_de_sante_3]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Villages_1,layer_Ville_Abomey_2,layer_infrastructure_de_sante_3]);
+        });
+        </script>
+    </body>
+</html>
